@@ -64,7 +64,12 @@ The pipeline is designed as a **layered system**, where each stage has a single 
     | Idempotent Partitions     |
     +---------------------------+
 
+---
+### Deployment Validation
+- Successfully validated on Azure VM using System-Assigned Managed Identity
+- Data written to ADLS Gen2 without any storage keys
 
+---
 ### Key Design Decisions
 - **Contract-driven processing** to prevent silent data corruption  
 - **Hourly normalization** with explicit gap detection (`data_gap_flag`)  

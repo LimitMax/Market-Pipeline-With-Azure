@@ -5,6 +5,14 @@ from common.errors import SystemError
 from common.config import get_storage_base_path
 
 from adlfs.spec import AzureBlobFileSystem
+from azure.identity import DefaultAzureCredential
+
+def _get_fs():
+    credential = DefaultAzureCredential()
+    return AzureBlobFileSystem(
+        account_name="marketpipeline",
+        credential=credential,
+    )
 
 def write_fact_market_hourly(
     hourly_data: Dict[str, pd.DataFrame],
@@ -42,15 +50,18 @@ def _write_single_asset(
         f"data.parquet"
     )
 
-    # 🔑 CRITICAL FIX: explicit Azure filesystem
-    fs = AzureBlobFileSystem(
-        account_name=None,  # picked up from env
-        account_key=None,   # picked up from env
-    )
+    # local run
+    # fs = AzureBlobFileSystem(
+    #     account_name=None,  # picked up from env
+    #     account_key=None,   # picked up from env
+    # )
+
+    # cloud run
+    fs = _get_fs()
 
     df.to_parquet(
         target_path,
         index=False,
         engine="pyarrow",
-        filesystem=fs,      # 👈 THIS IS THE KEY
+        filesystem=fs,
     )

@@ -1,0 +1,7 @@
+pandas
+pyarrow
+yfinance
+pytest
+adlfs
+fsspec
+azure-storage-blob

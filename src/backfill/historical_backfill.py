@@ -48,9 +48,9 @@ def run_historical_backfill(
 
 
 if __name__ == "__main__":
-    # Example: backfill from Jan 1, 2025 to today
+    # buat tes pakai range dikit aja dulu
     run_historical_backfill(
         start_date=date(2025, 1, 1),
-        end_date=date(2025, 1, 5),
+        end_date=date.today(),
         sleep_seconds=2,
     )

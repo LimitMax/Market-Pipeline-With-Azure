@@ -7,12 +7,16 @@ from common.config import get_storage_base_path
 from adlfs.spec import AzureBlobFileSystem
 from azure.identity import DefaultAzureCredential
 
-def _get_fs():
-    credential = DefaultAzureCredential()
-    return AzureBlobFileSystem(
-        account_name="marketpipeline",
-        credential=credential,
-    )
+_fs = None
+
+def get_fs():
+    global _fs
+    if _fs is None:
+        _fs = AzureBlobFileSystem(
+            account_name="marketpipeline",
+            credential=DefaultAzureCredential(),
+        )
+    return _fs
 
 def write_fact_market_hourly(
     hourly_data: Dict[str, pd.DataFrame],
@@ -57,7 +61,7 @@ def _write_single_asset(
     # )
 
     # cloud run
-    fs = _get_fs()
+    fs = get_fs()
 
     df.to_parquet(
         target_path,

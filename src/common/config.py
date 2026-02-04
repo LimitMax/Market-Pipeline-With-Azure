@@ -13,6 +13,9 @@ def load_active_assets() -> List[str]:
     return [
         "BTC-USD",
         "ETH-USD",
+        "LTC-USD",
+        "XRP-USD",
+        "SOL-USD",
     ]
 
 

@@ -5,4 +5,4 @@ pytest
 adlfs
 fsspec
 azure-storage-blob
-python-3.10
+azure-identity

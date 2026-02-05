@@ -12,10 +12,10 @@ def build_fact(con):
     SELECT
         a.asset_key,
         d.datetime_key,
-        f.open AS open_price,
-        f.high AS high_price,
-        f.low AS low_price,
-        f.close AS close_price,
+        f.open_price,
+        f.high_price,
+        f.low_price,
+        f.close_price,
         f.volume
     FROM read_parquet('{DATA_LAKE_PATH}') f
     JOIN dim_asset a

@@ -29,9 +29,9 @@ def build_dim_asset(con):
     assets = [
         ("BTC-USD", "crypto"),
         ("ETH-USD", "crypto"),
-        ("BNB-USD", "crypto"),
+        ("LTC-USD", "crypto"),
         ("SOL-USD", "crypto"),
-        ("ADA-USD", "crypto"),
+        ("XRP-USD", "crypto"),
     ]
 
     con.execute("""

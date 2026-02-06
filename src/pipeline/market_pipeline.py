@@ -20,6 +20,7 @@ from processing.validate import (
     validate_hourly_data,
 )
 from storage.market_repository import write_fact_market_hourly
+from storage.pipeline_event_repository import write_pipeline_event
 from common.pipeline_run import (
     generate_run_id,
     start_pipeline_run,
@@ -59,24 +60,44 @@ def run_market_pipeline(
 
     try:
         # 1. Load asset scope
-        assets: List[str] = load_active_assets()
+        assets = load_active_assets()
         if not assets:
             raise DataValidationError("Asset list is empty")
 
         # 2. Extract raw data (with retry for source failure)
-        raw_data = retry(
-            func=extract_market_data,
-            retries=3,
-            retry_on=SourceError,
-            assets=assets,
-            execution_date=execution_date,
-            pipeline_run_id=pipeline_run_id,
-        )
+        raw_data = []
+
+        for asset in assets:
+            if asset["type"] == "stock" and execution_date.weekday() >= 5:
+                write_pipeline_event({
+                    "pipeline_run_id": pipeline_run_id,
+                    "pipeline_name": PIPELINE_NAME,
+                    "event_type": "ASSET_SKIPPED",
+                    "step": "EXTRACT",
+                    "asset": asset["symbol"],
+                    "asset_type": asset["type"],
+                    "reason": "NON_TRADING_DAY",
+                    "execution_date": execution_date,
+                })
+                continue
+
+            asset_raw = retry(
+                func=extract_market_data,
+                retries=3,
+                retry_on=SourceError,
+                symbol=asset["symbol"],
+                asset_type=asset["type"],
+                execution_date=execution_date,
+                pipeline_run_id=pipeline_run_id,
+            )
+            raw_data.append(asset_raw)
 
         # 3. Validate raw ingestion
+        expected_symbols = [a["symbol"] for a in assets]
+
         validate_raw_data(
             raw_data=raw_data,
-            expected_assets=assets,
+            expected_assets=expected_symbols,
             execution_date=execution_date,
         )
 
@@ -84,16 +105,25 @@ def run_market_pipeline(
         cleaned_data = clean_market_data(raw_data)
 
         # 5. Normalize to hourly granularity
-        hourly_data = normalize_to_hourly(
-            cleaned_data=cleaned_data,
-            execution_date=execution_date,
-        )
+        hourly_data = []
+
+        for asset, df in cleaned_data.items():
+            asset_meta = next(a for a in assets if a["symbol"] == asset)
+
+            hourly = normalize_to_hourly(
+                cleaned_data=df,
+                asset_type=asset_meta["type"],
+                execution_date=execution_date,
+            )
+            hourly_data.append(hourly)
 
         # 6. Validate analytics contract
-        validate_hourly_data(
-            hourly_data=hourly_data,
-            execution_date=execution_date,
-        )
+        for asset_hourly in hourly_data:
+            validate_hourly_data(
+                hourly_data=asset_hourly,
+                execution_date=execution_date,
+            )
+
 
         # 7. Load analytics-ready fact table (idempotent)
         write_fact_market_hourly(

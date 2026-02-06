@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict
 from datetime import date, datetime, timedelta
 import pandas as pd
 import yfinance as yf
@@ -7,39 +7,44 @@ from common.errors import SourceError
 
 
 def extract_market_data(
-    assets: List[str],
+    symbol: str,
+    asset_type: str,
     execution_date: date,
     pipeline_run_id: str,
-) -> Dict[str, pd.DataFrame]:
+) -> pd.DataFrame:
+    """
+    Extract raw market data for a single asset and execution date.
 
-    results: Dict[str, pd.DataFrame] = {}
+    Returns:
+        pd.DataFrame with raw hourly market data.
+    """
 
-    for asset in assets:
-        try:
-            df = _fetch_single_asset(asset, execution_date)
-            results[asset] = df
+    try:
+        df = _fetch_single_asset(symbol, execution_date)
+    except Exception as err:
+        raise SourceError(
+            f"Failed to fetch data from yfinance for asset={symbol} "
+            f"on execution_date={execution_date}: {err}"
+        )
 
-        except Exception as err:
-            # Wrap any external failure as SourceError
-            raise SourceError(
-                f"Failed to fetch data from yfinance for asset={asset} "
-                f"on execution_date={execution_date}: {err}"
-            )
+    # Add minimal metadata for downstream steps
+    df["asset"] = symbol
+    df["asset_type"] = asset_type
+    df["execution_date"] = execution_date
+    df["pipeline_run_id"] = pipeline_run_id
 
-    return results
+    return df
 
 
 def _fetch_single_asset(
-    asset: str,
+    symbol: str,
     execution_date: date,
 ) -> pd.DataFrame:
-
     start_dt = datetime.combine(execution_date, datetime.min.time())
     end_dt = start_dt + timedelta(days=1)
 
-    ticker = yf.Ticker(asset)
+    ticker = yf.Ticker(symbol)
 
-    # yfinance returns index as DatetimeIndex
     df = ticker.history(
         start=start_dt,
         end=end_dt,
@@ -50,7 +55,7 @@ def _fetch_single_asset(
 
     if df is None or df.empty:
         raise SourceError(
-            f"Empty response from yfinance for asset={asset} "
+            f"Empty response from yfinance for asset={symbol} "
             f"on execution_date={execution_date}"
         )
 

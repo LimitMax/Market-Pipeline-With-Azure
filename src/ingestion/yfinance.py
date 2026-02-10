@@ -1,10 +1,9 @@
 from typing import Dict
-from datetime import date, datetime, timedelta
 import pandas as pd
 import yfinance as yf
 
+from datetime import date, datetime, timedelta
 from common.errors import SourceError
-
 
 def extract_market_data(
     symbol: str,
@@ -12,21 +11,17 @@ def extract_market_data(
     execution_date: date,
     pipeline_run_id: str,
 ) -> pd.DataFrame:
-    """
-    Extract raw market data for a single asset and execution date.
-
-    Returns:
-        pd.DataFrame with raw hourly market data.
-    """
-
+    
     try:
         df = _fetch_single_asset(symbol, execution_date)
     except Exception as err:
+        if asset_type == "stock":
+            # stock boleh kosong / gagal
+            return pd.DataFrame()
         raise SourceError(
             f"Failed to fetch data from yfinance for asset={symbol} "
             f"on execution_date={execution_date}: {err}"
         )
-
     # Add minimal metadata for downstream steps
     df["asset"] = symbol
     df["asset_type"] = asset_type
@@ -34,7 +29,6 @@ def extract_market_data(
     df["pipeline_run_id"] = pipeline_run_id
 
     return df
-
 
 def _fetch_single_asset(
     symbol: str,
@@ -54,10 +48,7 @@ def _fetch_single_asset(
     )
 
     if df is None or df.empty:
-        raise SourceError(
-            f"Empty response from yfinance for asset={symbol} "
-            f"on execution_date={execution_date}"
-        )
+        return pd.DataFrame()
 
     df = df.reset_index()
 

@@ -1,0 +1,56 @@
+2026-02-09 12:20:22,288 | INFO | {'event': 'PIPELINE_RUN_START', 'run_id': '743f6c6c-7057-4d8b-805e-7d74901b901d', 'pipeline': 'market_pipeline', 'run_type': 'backfill', 'execution_date': '2025-01-26', 'start_time': '2026-02-09T05:20:22.287980'}
+2026-02-09 12:20:22,289 | INFO | {'event': 'PIPELINE_START', 'pipeline': 'market_pipeline', 'run_id': '743f6c6c-7057-4d8b-805e-7d74901b901d', 'execution_date': '2025-01-26', 'timestamp': '2026-02-09T05:20:22.289365'}
+2026-02-09 12:20:22,997 | INFO | {'event': 'PIPELINE_RUN_COMPLETE', 'run_id': '743f6c6c-7057-4d8b-805e-7d74901b901d', 'status': 'SUCCESS', 'end_time': '2026-02-09T05:20:22.997219'}
+2026-02-09 12:20:22,997 | INFO | {'event': 'PIPELINE_END', 'pipeline': 'market_pipeline', 'run_id': '743f6c6c-7057-4d8b-805e-7d74901b901d', 'timestamp': '2026-02-09T05:20:22.997219'}
+2026-02-09 12:20:25,026 | INFO | {'event': 'PIPELINE_RUN_START', 'run_id': 'b42c9384-6823-4176-af85-40816fa6e526', 'pipeline': 'market_pipeline', 'run_type': 'backfill', 'execution_date': '2025-01-27', 'start_time': '2026-02-09T05:20:25.026168'}
+2026-02-09 12:20:25,026 | INFO | {'event': 'PIPELINE_START', 'pipeline': 'market_pipeline', 'run_id': 'b42c9384-6823-4176-af85-40816fa6e526', 'execution_date': '2025-01-27', 'timestamp': '2026-02-09T05:20:25.026168'}
+2026-02-09 12:20:25,626 | INFO | {'event': 'PIPELINE_RUN_COMPLETE', 'run_id': 'b42c9384-6823-4176-af85-40816fa6e526', 'status': 'SUCCESS', 'end_time': '2026-02-09T05:20:25.626902'}
+2026-02-09 12:20:25,627 | INFO | {'event': 'PIPELINE_END', 'pipeline': 'market_pipeline', 'run_id': 'b42c9384-6823-4176-af85-40816fa6e526', 'timestamp': '2026-02-09T05:20:25.627901'}
+2026-02-09 13:29:27,867 | INFO | {'event': 'PIPELINE_RUN_START', 'run_id': 'a647d52a-579b-42dc-a91c-8eff516e0f45', 'pipeline': 'market_pipeline', 'run_type': 'scheduled', 'execution_date': '2025-02-04', 'start_time': '2026-02-09T06:29:27.867642'}
+2026-02-09 13:29:27,868 | INFO | {'event': 'PIPELINE_START', 'pipeline': 'market_pipeline', 'run_id': 'a647d52a-579b-42dc-a91c-8eff516e0f45', 'execution_date': '2025-02-04', 'timestamp': '2026-02-09T06:29:27.868638'}
+2026-02-09 13:29:28,836 | INFO | {'event': 'PIPELINE_RUN_COMPLETE', 'run_id': 'a647d52a-579b-42dc-a91c-8eff516e0f45', 'status': 'SUCCESS', 'end_time': '2026-02-09T06:29:28.836728'}
+2026-02-09 13:29:28,836 | INFO | {'event': 'PIPELINE_END', 'pipeline': 'market_pipeline', 'run_id': 'a647d52a-579b-42dc-a91c-8eff516e0f45', 'timestamp': '2026-02-09T06:29:28.836728'}
+2026-02-09 13:29:57,115 | INFO | {'event': 'PIPELINE_RUN_START', 'run_id': 'ab0cc2e8-6985-4354-9749-02c9c1c24e7d', 'pipeline': 'market_pipeline', 'run_type': 'scheduled', 'execution_date': '2025-02-04', 'start_time': '2026-02-09T06:29:57.115923'}
+2026-02-09 13:29:57,115 | INFO | {'event': 'PIPELINE_START', 'pipeline': 'market_pipeline', 'run_id': 'ab0cc2e8-6985-4354-9749-02c9c1c24e7d', 'execution_date': '2025-02-04', 'timestamp': '2026-02-09T06:29:57.115923'}
+2026-02-09 13:29:58,122 | INFO | {'event': 'PIPELINE_RUN_COMPLETE', 'run_id': 'ab0cc2e8-6985-4354-9749-02c9c1c24e7d', 'status': 'SUCCESS', 'end_time': '2026-02-09T06:29:58.122157'}
+2026-02-09 13:29:58,122 | INFO | {'event': 'PIPELINE_END', 'pipeline': 'market_pipeline', 'run_id': 'ab0cc2e8-6985-4354-9749-02c9c1c24e7d', 'timestamp': '2026-02-09T06:29:58.122157'}
+2026-02-09 13:31:14,254 | INFO | {'event': 'PIPELINE_RUN_START', 'run_id': '6ef86af6-0088-4bcc-b1ca-a5add1769e08', 'pipeline': 'market_pipeline', 'run_type': 'scheduled', 'execution_date': '2025-02-04', 'start_time': '2026-02-09T06:31:14.254955'}
+2026-02-09 13:31:14,255 | INFO | {'event': 'PIPELINE_START', 'pipeline': 'market_pipeline', 'run_id': '6ef86af6-0088-4bcc-b1ca-a5add1769e08', 'execution_date': '2025-02-04', 'timestamp': '2026-02-09T06:31:14.255957'}
+2026-02-09 13:31:15,246 | INFO | {'event': 'PIPELINE_RUN_COMPLETE', 'run_id': '6ef86af6-0088-4bcc-b1ca-a5add1769e08', 'status': 'SUCCESS', 'end_time': '2026-02-09T06:31:15.246469'}
+2026-02-09 13:31:15,247 | INFO | {'event': 'PIPELINE_END', 'pipeline': 'market_pipeline', 'run_id': '6ef86af6-0088-4bcc-b1ca-a5add1769e08', 'timestamp': '2026-02-09T06:31:15.247999'}
+2026-02-09 14:20:13,799 | INFO | PIPELINE_RUN_START | f3a9e6f0-4f2e-450f-b29c-2b9b090a9039 | Pipeline run started
+2026-02-09 14:20:13,799 | INFO | PIPELINE_START | f3a9e6f0-4f2e-450f-b29c-2b9b090a9039 | Pipeline started
+2026-02-09 14:20:14,757 | INFO | PIPELINE_RUN_COMPLETE | f3a9e6f0-4f2e-450f-b29c-2b9b090a9039 | Pipeline run completed
+2026-02-09 14:20:14,757 | INFO | PIPELINE_END | f3a9e6f0-4f2e-450f-b29c-2b9b090a9039 | Pipeline finished
+2026-02-09 14:49:54,815 | INFO | PIPELINE_RUN_START | 5edd7476-af13-4496-b11f-ca46dd26eff0 | Pipeline run started
+2026-02-09 14:49:54,815 | INFO | PIPELINE_START | 5edd7476-af13-4496-b11f-ca46dd26eff0 | Pipeline started
+2026-02-09 14:49:55,540 | ERROR | - | - | $AAPL: possibly delisted; no price data found  (1h 2026-02-09 00:00:00 -> 2026-02-10 00:00:00)
+2026-02-09 14:49:55,540 | ERROR | PIPELINE_ERROR | 5edd7476-af13-4496-b11f-ca46dd26eff0 | Pipeline error
+2026-02-09 14:49:55,540 | INFO | PIPELINE_RUN_COMPLETE | 5edd7476-af13-4496-b11f-ca46dd26eff0 | Pipeline run completed
+2026-02-09 14:49:55,540 | INFO | PIPELINE_END | 5edd7476-af13-4496-b11f-ca46dd26eff0 | Pipeline finished
+2026-02-09 15:00:59,227 | INFO | PIPELINE_RUN_START | 4acbf447-c62a-4e93-a401-312164bf8cac | Pipeline run started
+2026-02-09 15:00:59,227 | INFO | PIPELINE_START | 4acbf447-c62a-4e93-a401-312164bf8cac | Pipeline started
+2026-02-09 15:00:59,887 | ERROR | - | - | $BTC-USD: possibly delisted; no price data found  (1h 2026-02-15 00:00:00 -> 2026-02-16 00:00:00) (Yahoo error = "Data doesn't exist for startDate = 1771113600, endDate = 1771200000")
+2026-02-09 15:00:59,887 | ERROR | PIPELINE_ERROR | 4acbf447-c62a-4e93-a401-312164bf8cac | Pipeline error
+2026-02-09 15:00:59,887 | INFO | PIPELINE_RUN_COMPLETE | 4acbf447-c62a-4e93-a401-312164bf8cac | Pipeline run completed
+2026-02-09 15:00:59,887 | INFO | PIPELINE_END | 4acbf447-c62a-4e93-a401-312164bf8cac | Pipeline finished
+2026-02-09 15:01:14,646 | INFO | PIPELINE_RUN_START | 4b2d4e9b-26c5-466d-9953-ceab4d889e75 | Pipeline run started
+2026-02-09 15:01:14,646 | INFO | PIPELINE_START | 4b2d4e9b-26c5-466d-9953-ceab4d889e75 | Pipeline started
+2026-02-09 15:01:15,281 | ERROR | - | - | $BTC-USD: possibly delisted; no price data found  (1h 2026-02-19 00:00:00 -> 2026-02-20 00:00:00) (Yahoo error = "Data doesn't exist for startDate = 1771459200, endDate = 1771545600")
+2026-02-09 15:01:15,286 | ERROR | PIPELINE_ERROR | 4b2d4e9b-26c5-466d-9953-ceab4d889e75 | Pipeline error
+2026-02-09 15:01:15,286 | INFO | PIPELINE_RUN_COMPLETE | 4b2d4e9b-26c5-466d-9953-ceab4d889e75 | Pipeline run completed
+2026-02-09 15:01:15,286 | INFO | PIPELINE_END | 4b2d4e9b-26c5-466d-9953-ceab4d889e75 | Pipeline finished
+2026-02-09 15:03:27,912 | INFO | PIPELINE_RUN_START | f16673a0-e90a-46d8-9abe-f2fe5df67d11 | Pipeline run started
+2026-02-09 15:03:27,912 | INFO | PIPELINE_START | f16673a0-e90a-46d8-9abe-f2fe5df67d11 | Pipeline started
+2026-02-09 15:03:28,814 | ERROR | - | - | $BTC-USD: possibly delisted; no price data found  (1h 2026-02-24 00:00:00 -> 2026-02-25 00:00:00) (Yahoo error = "Data doesn't exist for startDate = 1771891200, endDate = 1771977600")
+2026-02-09 15:03:28,814 | ERROR | PIPELINE_ERROR | f16673a0-e90a-46d8-9abe-f2fe5df67d11 | Pipeline error
+2026-02-09 15:03:28,814 | INFO | PIPELINE_RUN_COMPLETE | f16673a0-e90a-46d8-9abe-f2fe5df67d11 | Pipeline run completed
+2026-02-09 15:03:28,814 | INFO | PIPELINE_END | f16673a0-e90a-46d8-9abe-f2fe5df67d11 | Pipeline finished
+2026-02-09 15:04:34,819 | INFO | PIPELINE_RUN_START | 9648a36e-a2a3-4dc4-a6cb-d9b9db9e4f3e | Pipeline run started
+2026-02-09 15:04:34,819 | INFO | PIPELINE_START | 9648a36e-a2a3-4dc4-a6cb-d9b9db9e4f3e | Pipeline started
+2026-02-09 15:04:35,957 | INFO | PIPELINE_RUN_COMPLETE | 9648a36e-a2a3-4dc4-a6cb-d9b9db9e4f3e | Pipeline run completed
+2026-02-09 15:04:36,804 | INFO | PIPELINE_END | 9648a36e-a2a3-4dc4-a6cb-d9b9db9e4f3e | Pipeline finished
+2026-02-09 15:08:31,749 | INFO | PIPELINE_RUN_START | 3d829bd3-9857-429b-ba0f-eb2b43a16cee | Pipeline run started
+2026-02-09 15:08:31,749 | INFO | PIPELINE_START | 3d829bd3-9857-429b-ba0f-eb2b43a16cee | Pipeline started
+2026-02-09 15:08:32,888 | INFO | PIPELINE_RUN_COMPLETE | 3d829bd3-9857-429b-ba0f-eb2b43a16cee | Pipeline run completed
+2026-02-09 15:08:33,115 | INFO | PIPELINE_END | 3d829bd3-9857-429b-ba0f-eb2b43a16cee | Pipeline finished

@@ -1,6 +1,9 @@
 import time
+import logging
+
 from typing import Callable, Type
 
+logger = logging.getLogger(__name__)
 
 def retry(
     func: Callable,
@@ -21,8 +24,12 @@ def retry(
         except retry_on as err:
             attempt += 1
 
-            if attempt > retries:
-                raise
-
-            time.sleep(delay)
-            delay *= backoff_factor
+            logger.warning(
+                "Retrying operation",
+                extra={
+                    "event": "RETRY",
+                    "attempt": attempt,
+                    "max_retries": retries,
+                    "error": str(err),
+                },
+            )

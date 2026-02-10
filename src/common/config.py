@@ -21,7 +21,4 @@ def load_active_assets() -> List[Dict[str, str]]:
 
 
 def get_storage_base_path() -> str:
-    """
-    Base path for analytics storage.
-    """
     return os.getenv("STORAGE_BASE_PATH", "./data/analytics")

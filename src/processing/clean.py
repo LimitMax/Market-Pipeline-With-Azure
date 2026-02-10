@@ -1,8 +1,7 @@
-from typing import Dict
 import pandas as pd
 
+from typing import Dict
 from common.errors import DataValidationError
-
 
 REQUIRED_COLUMNS = {
     "timestamp",
@@ -13,13 +12,14 @@ REQUIRED_COLUMNS = {
     "volume",
 }
 
-
 def clean_market_data(raw_data: Dict[str, pd.DataFrame]) -> Dict[str, pd.DataFrame]:
     cleaned_data: Dict[str, pd.DataFrame] = {}
 
     for asset, df in raw_data.items():
-        if df is None or df.empty:
-            raise DataValidationError(f"Empty raw dataframe for asset={asset}")
+        if df is None:
+            raise DataValidationError(
+                f"Raw data for asset={asset} is None"
+            )
 
         _validate_required_columns(df, asset)
 
@@ -41,14 +41,12 @@ def clean_market_data(raw_data: Dict[str, pd.DataFrame]) -> Dict[str, pd.DataFra
 
     return cleaned_data
 
-
 def _validate_required_columns(df: pd.DataFrame, asset: str) -> None:
     missing = REQUIRED_COLUMNS - set(df.columns.str.lower())
     if missing:
         raise DataValidationError(
             f"Missing required columns {missing} for asset={asset}"
         )
-
 
 def _standardize_columns(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -65,7 +63,6 @@ def _standardize_columns(df: pd.DataFrame) -> pd.DataFrame:
     df = df.rename(columns=rename_map)
 
     return df
-
 
 def _cast_types(df: pd.DataFrame, asset: str) -> pd.DataFrame:
     """

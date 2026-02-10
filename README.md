@@ -38,16 +38,16 @@ This project implements a production-style market data pipeline with one core pr
 "Ensure analytical correctness through engineering-grade reliability."
 
 Key design decisions include:
-### 1). Daily Watermarking
+#### 1). Daily Watermarking
 Tracks the last fully processed date per asset, enabling safe retries and automatic catch-up.
-### 2). Market-aware Processing
+#### 2). Market-aware Processing
 - Crypto: strict 24-hour completeness
 - Stocks: trading hours only => Incomplete days are explicitly skipped.
-### 3). Contract-driven Validation
+#### 3). Contract-driven Validation
 Data is validated before entering the data lake; invalid data fails fast.
-### 4). Idempotent Storage
+#### 4). Idempotent Storage
 Partitioned by asset/date, safe for reprocessing without duplication.
-### 5). Clear Execution Modes
+#### 5). Clear Execution Modes
 Scheduled, manual override, and controlled backfill.
 
 ---

@@ -29,9 +29,7 @@ from storage.market_repository import write_fact_market_hourly
 from storage.pipeline_event_repository import write_pipeline_event
 from storage.watermark_repository import update_daily_watermark
 
-
 PIPELINE_NAME = "market_pipeline"
-
 
 def run_market_pipeline(
     run_type: str,
@@ -215,9 +213,6 @@ def run_market_pipeline(
                     "execution_date": execution_date,
                     "error_message": str(err),
                 })
-
-        
-
 
         # ==================================================
         # PIPELINE SUCCESS

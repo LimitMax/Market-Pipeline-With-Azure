@@ -1,5 +1,5 @@
 import os
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pipeline.market_pipeline import run_market_pipeline
 from common.logging_config import setup_logging
 from pipeline.scheduler_utils import determine_execution_dates
@@ -40,7 +40,7 @@ if __name__ == "__main__":
         # ================================
         # 🤖 AUTO SCHEDULE MODE
         # ================================
-        today = date.today()
+        today =  date.today() - timedelta(days=1)
 
         for execution_date in determine_execution_dates(today):
             run_market_pipeline(

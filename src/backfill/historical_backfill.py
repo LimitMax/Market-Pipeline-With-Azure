@@ -145,6 +145,6 @@ if __name__ == "__main__":
     # local test pake range kecil aja
     run_historical_backfill(
         start_date=date(2025, 1, 26),
-        end_date=date(2025, 1, 27),
+        end_date=date.today(),
         sleep_seconds=2,
     )
